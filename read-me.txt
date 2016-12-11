@@ -1,0 +1,16 @@
+Run the opt_path file to run the algorithm.
+All the variables that are used are in opt_path. The user may choose to change the values and plot different data sets. Since the robot has 5 states, the variable 
+'save_x' obtained at the end has information regarding all states. If the robot is to take 20 steps then the 'save_x' will be a 20*5 matrix, where the first row will
+have values of [(x-cord of robot) (y-cord of robot) (robot orientation angle) (robot velocity in x direction) (robot velocity in y direction)] for the first position 
+of the robot.
+J is the variable that computes function values.
+gradient_lambda is the gradient that is used to perform optimization.
+m is the domain size. If m=5 then the domain is 5X5.
+T is the total time and h is the time step. The number of steps taken by the robot will be T/h. 
+In the results that were reported, T was 2 and h was 0.1. Make sure T/h is an integer.
+
+Please refer to comments for information regarding other variables.
+
+Try out different domains and different time steps.
+For example make m=8 and T=4 and h=0.1
+The robot will traverse an 8X8 domain for 40 steps.
