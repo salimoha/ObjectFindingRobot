@@ -59,9 +59,9 @@ elseif ( nargin == 8 ),
     try
       [c,ceq,dc,dceq] = nonlcon(x);
       z = nF - 1 - size(c,1) - size(ceq,1);
-      F = [ F; c; ceq; zeros(z,1) ];
+      F1 = [ F; c; ceq; zeros(z,1) ];
       G = [ G; dc; dceq; zeros(z,n) ];
-%       F=F1;
+      F=F1;
     catch
       [c,ceq] = nonlcon(x);
       z = nF - 1 - size(c,1) - size(ceq,1);
