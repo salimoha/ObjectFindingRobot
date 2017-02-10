@@ -21,13 +21,9 @@ J0=J0start;
 j_check=0;
  fun =  @(u) marchandcomputefunction2(u,save_x);
 % snsolve
-keyboard
-[u] = solve_u(u, save_x)
-
-
+[u] = solve_u(u, save_x);
+[J,save_x]=marchandcomputefunction(u(:,1),x); 
 close all; plot(save_x(:,1),save_x(:,2),'-.*')
-    
-
     
 end
 
@@ -36,7 +32,6 @@ end
 
 function [x] = solve_u(x,save_x)
 %% snopt configuration
-keyboard
 n = length(x);
 snscreen off;
 snprint('toymin.out');  % By default, screen output is off;
@@ -45,7 +40,7 @@ sntoy.spc = which('sntoy.spc');
 % snspec (sntoy.spc);
 
 % snseti ('Major Iteration limit', 250);
-snseti ('Major Iteration limit', 500);
+snseti ('Major Iteration limit', 100);
 
 % x0=[0.4;0];
 % A      = [ 0  0];
@@ -59,7 +54,6 @@ ub     = Inf*ones(n,1);
 options.name = 'toyprob';
 options.stop = @toySTOP;
  fun =  @(x) marchandcomputefunction2(x,save_x); 
-% [x,fval,INFO,lambda] = snsolve( @objfungrad, x, Ain, bin, [], [], lb, ub, @confungrad, options);
 [x,fval,INFO,lambda] = snsolve( fun, x, [], [], [], [], lb, ub, @consfungrad2, options);
 snprint off;
 snend;
@@ -68,12 +62,12 @@ end
 
 function [c,ceq,DC,DCeq] = consfungrad2(x)
 n = length(x);
-c(:,1) = 0;
+c = [];
 % No nonlinear equality constraints
 ceq=[];
 % Gradient of the constraints:
 % % % if nargout > 2
-DC = zeros(n,1);
+DC = [];
    DCeq = [];
 end
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
