@@ -1,5 +1,6 @@
 function [a]=armijo_condition(fun,f1,g1,u,p,a,x)    
-gamma=0.9;%a=1;
+% gamma=0.9;%a=1;
+gamma=0.5;
 eta=0.5;
 % %armijo condition
 [f2]=fun(u+a*p,x);

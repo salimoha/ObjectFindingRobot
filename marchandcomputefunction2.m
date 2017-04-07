@@ -14,6 +14,6 @@ for ii=1:N
     
 end
 J=compute_function_gradient(x(:,1),x(:,2),0);   % firstdiff is the function where the actual value of the objective function is computed
-[gradient_lambda] = computegradient(x);
+[gradient_lambda] = computegradient(x,u);
 G=[gradient_lambda(N+1:2*N);gradient_lambda(1:N)];
 
